@@ -13,7 +13,7 @@ public class CreatePassword : MonoBehaviour
     public int PasswordLength
     {
         get { return passwordLength; }
-        set { passwordLength = Mathf.Clamp(value, 1, 100); } // The password cannot be more than 100 and less than 1
+        set { passwordLength = Mathf.Clamp(value, 4, 100); } // The password cannot be more than 100 and less than 4
     }
 
     [Header("Components")]
@@ -24,11 +24,13 @@ public class CreatePassword : MonoBehaviour
     public Toggle uppercaseComponent;
     public Toggle specialCharComponent;
     public Toggle numberComponent;
+    public Toggle spaceComponent;
 
     private string lowercase = "abcdefghijklmnopqrstuvwxyz";
     private string uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     private string number = "123456789";
-    private string specialChar = " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
+    private string specialChar = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
+    private string withSpace = " ";
 
     void Start()
     {
@@ -97,6 +99,7 @@ public class CreatePassword : MonoBehaviour
         if (lowercaseComponent.isOn) characterForPassword += lowercase;
         if (uppercaseComponent.isOn) characterForPassword += uppercase;
         if (specialCharComponent.isOn) characterForPassword += specialChar;
+        if (spaceComponent.isOn) characterForPassword += withSpace;
         if (numberComponent.isOn) characterForPassword += number;
     }
 
